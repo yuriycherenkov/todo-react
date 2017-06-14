@@ -1,0 +1,50 @@
+.list_item {
+    position: relative;
+    p {
+        padding: 5px 50px 5px 30px;
+        margin: 0;
+    }
+    input {
+        display: block;
+        padding: 5px 50px 5px 30px;
+        margin: 0;
+    }
+}
+
+.list_item-remove {
+    display: inline-block;
+    border: none;
+    outline: none;
+    color: #f00;
+    background-color: transparent;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    &:before {
+        content: "\f00d";
+        font-family: FontAwesome;
+        display: inline-block;
+        padding: 5px;
+    }
+}
+
+.list_item_done {
+    @extend .list_item-remove;
+    color: #0f0;
+    right: auto;
+    left: 5px;
+    &:before {
+        content: "\f00c";
+    }
+} 
+
+.list_item-edit {
+    @extend .list_item-remove;
+    color: #00f;
+    right: 30px;
+    &:before {
+        content: "\f040";
+    }
+}
