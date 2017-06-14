@@ -11,7 +11,7 @@ class Form extends Component {
 
   onSubmitForm = (e) => {
     e.preventDefault();
-    this.props.formOnSubmit(this.state.inputValue);
+    this.props.addToList(this.state.inputValue);
     this.setState({ inputValue: '' });
   };
 
@@ -35,7 +35,7 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  formOnSubmit: PropTypes.func.isRequired,
+  addToList: PropTypes.func.isRequired,
 };
 
 export default Form;

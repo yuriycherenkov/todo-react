@@ -10,7 +10,7 @@ const cssDev = ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader
   loader: 'postcss-loader',
   options: {
     plugins() {
-      return [autoprefixer]
+      return [autoprefixer];
     },
   },
 }];
@@ -21,7 +21,7 @@ const cssProd = ExtractTextPlugin.extract({
     loader: 'postcss-loader',
     options: {
       plugins() {
-        return [autoprefixer]
+        return [autoprefixer];
       },
     },
   }],
@@ -33,7 +33,7 @@ const bootstrapConfig = isProd ? bootstrapEntryPoint.prod : bootstrapEntryPoint.
 module.exports = {
   entry: {
   	// bootstrap: bootstrapConfig,
-    app: './src/index.js',
+    app: './src/index.jsx',
   },
   output: {
   	path: path.resolve(__dirname, 'dist'),
@@ -42,58 +42,58 @@ module.exports = {
   devtool: 'source-map',
   module: {
     rules: [{
-    test: /\.css|\.scss$/,
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: ['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap', {
+      test: /\.css|\.scss$/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: ['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap', {
         loader: 'postcss-loader',
         options: {
-          plugins () {
-            return [autoprefixer]
+          plugins() {
+            return [autoprefixer];
           },
         },
       }],
-    }),
-  },
-  {
-    test: /\.jsx?$/,
-    loader: 'babel-loader',
+      }),
+    },
+    {
+      test: /\.jsx?$/,
+      loader: 'babel-loader',
       // other babel options are specified in .babelrc
-    exclude: /node_modules/,
-  }, {
-    test: /\.json$/,
-    loader: 'json',
-  },
-  {
-    test: /\.(jpe?g|png|gif|svg)$/i,
-    use: [
+      exclude: /node_modules/,
+    }, {
+      test: /\.json$/,
+      loader: 'json',
+    },
+    {
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      use: [
               // 'file-loader?name=[name].[ext]&outputPath=./&publicPath=./',
-            'file-loader?name=images/[name].[ext]',
-            'image-webpack-loader',
-          ],
-  },
-  {
-    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-    use: [
-      {
-        loader: 'url-loader',
-        options: {
+        'file-loader?name=images/[name].[ext]',
+        'image-webpack-loader',
+      ],
+    },
+    {
+      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
           limit: 10000,
           mimetype: 'application/font-woff',
         },
-      },
-    ],
+        },
+      ],
 
       // { test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports-loader?jQuery=jquery' },
-  },
-  {
-    test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-    use: [
+    },
+    {
+      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      use: [
       { loader: 'file-loader' },
-    ],
-  },
+      ],
+    },
   // { test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports-loader?jQuery=jquery' },
-  ] },
+    ] },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
