@@ -55,22 +55,20 @@ App.propTypes = {
   onEditListitem: PropTypes.func.isRequired,
 };
 
+function mapStateToProps(state) {
+  return { list: state.listReducer };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addToList: value => dispatch(listActions.addListItem(value)),
+    removeListItem: id => dispatch(listActions.removeListItem(id)),
+    toggleListItemDone: id => dispatch(listActions.toggleListItemDone(id)),
+    onEditListitem: (id, value) => dispatch(listActions.editListItem(id, value)),
+  };
+}
+
 export default connect(
-  state => ({
-    list: state.listReducer,
-  }),
-  dispatch => ({
-    addToList: (value) => {
-      dispatch(listActions.addListItem(value));
-    },
-    removeListItem: (id) => {
-      dispatch(listActions.removeListItem(id));
-    },
-    toggleListItemDone: (id) => {
-      dispatch(listActions.toggleListItemDone(id));
-    },
-    onEditListitem: (id, value) => {
-      dispatch(listActions.editListItem(id, value));
-    },
-  }),
+  mapStateToProps,
+  mapDispatchToProps,
 )(App);
