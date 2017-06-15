@@ -43,7 +43,6 @@ class ListItem extends Component {
   render() {
     const { listItem } = this.props;
     const { isEditable } = this.state;
-    // console.log(this.props);
     return (
       <li
         className="list_item"

@@ -2,41 +2,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
-const bootstrapEntryPoint = require('./webpack.bootstrap.config.js');
 const autoprefixer = require('autoprefixer');
-
-const isProd = process.env.NODE_ENV === 'production';
-const cssDev = ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap', {
-  loader: 'postcss-loader',
-  options: {
-    plugins() {
-      return [autoprefixer];
-    },
-  },
-}];
-
-const cssProd = ExtractTextPlugin.extract({
-  fallback: 'style-loader',
-  use: ['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap', {
-    loader: 'postcss-loader',
-    options: {
-      plugins() {
-        return [autoprefixer];
-      },
-    },
-  }],
-	// publicPath: '/dist'
-});
-const cssConfig = isProd ? cssProd : cssDev;
-const bootstrapConfig = isProd ? bootstrapEntryPoint.prod : bootstrapEntryPoint.dev;
 
 module.exports = {
   entry: {
-  	// bootstrap: bootstrapConfig,
+  // bootstrap: bootstrapConfig,
     app: './src/index.jsx',
   },
   output: {
-  	path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
   },
   devtool: 'source-map',
@@ -46,13 +20,13 @@ module.exports = {
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: ['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap', {
-        loader: 'postcss-loader',
-        options: {
-          plugins() {
-            return [autoprefixer];
+          loader: 'postcss-loader',
+          options: {
+            plugins() {
+              return [autoprefixer];
+            },
           },
-        },
-      }],
+        }],
       }),
     },
     {
@@ -78,9 +52,9 @@ module.exports = {
         {
           loader: 'url-loader',
           options: {
-          limit: 10000,
-          mimetype: 'application/font-woff',
-        },
+            limit: 10000,
+            mimetype: 'application/font-woff',
+          },
         },
       ],
 
@@ -108,16 +82,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Webpack App',
       // minify: {
-      // 	collapseWhitespace: true
+      // collapseWhitespace: true
       // },
       hash: true,
       template: './src/index.html',
     }),
-    //  new ExtractTextPlugin({
-    // 	 filename:  './css/[name].css',
-    // 	 disable: false,
-    //      allChunks: false
-    //  }),
     new ExtractTextPlugin('[name].css'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
