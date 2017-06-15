@@ -41,7 +41,7 @@ module.exports = {
     {
       test: /\.(jpe?g|png|gif|svg)$/i,
       use: [
-              // 'file-loader?name=[name].[ext]&outputPath=./&publicPath=./',
+        // 'file-loader?name=[name].[ext]&outputPath=./&publicPath=./',
         'file-loader?name=images/[name].[ext]',
         'image-webpack-loader',
       ],
@@ -57,8 +57,6 @@ module.exports = {
           },
         },
       ],
-
-      // { test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports-loader?jQuery=jquery' },
     },
     {
       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -66,7 +64,6 @@ module.exports = {
       { loader: 'file-loader' },
       ],
     },
-  // { test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports-loader?jQuery=jquery' },
     ] },
   resolve: {
     extensions: ['.js', '.jsx'],

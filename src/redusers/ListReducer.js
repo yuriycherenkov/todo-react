@@ -1,4 +1,4 @@
-import { ADD_LIST_ITEM, REMOVE_LIST_ITEM, TOGGLE_DONE_LIST_ITEM, EDIT_LIST_ITEM } from '../actions/index';
+import { ADD_LIST_ITEM, REMOVE_LIST_ITEM, TOGGLE_DONE_LIST_ITEM, EDIT_LIST_ITEM } from '../constants/ActionTypes';
 import { generateId } from '../actions/index';
 
 const initData = [

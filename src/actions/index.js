@@ -1,7 +1,4 @@
-export const ADD_LIST_ITEM = 'ADD_LIST_ITEM';
-export const REMOVE_LIST_ITEM = 'REMOVE_LIST_ITEM';
-export const TOGGLE_DONE_LIST_ITEM = 'TOGGLE_DONE_LIST_ITEM';
-export const EDIT_LIST_ITEM = 'EDIT_LIST_ITEM';
+import { ADD_LIST_ITEM, REMOVE_LIST_ITEM, TOGGLE_DONE_LIST_ITEM, EDIT_LIST_ITEM } from '../constants/ActionTypes';
 
 export function generateId() {
   return parseInt((Math.random() * 10000), 10);
