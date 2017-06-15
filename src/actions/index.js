@@ -1,5 +1,6 @@
 export const ADD_LIST_ITEM = 'ADD_LIST_ITEM';
 export const REMOVE_LIST_ITEM = 'REMOVE_LIST_ITEM';
+export const TOGGLE_DONE_LIST_ITEM = 'TOGGLE_DONE_LIST_ITEM';
 export const EDIT_LIST_ITEM = 'EDIT_LIST_ITEM';
 
 export function generateId() {
@@ -28,9 +29,19 @@ export function removeListItem(id) {
 
 export function toggleListItemDone(id) {
   return {
+    type: TOGGLE_DONE_LIST_ITEM,
+    payload: {
+      id,
+    },
+  };
+}
+
+export function editListItem(id, title) {
+  return {
     type: EDIT_LIST_ITEM,
     payload: {
       id,
+      title,
     },
   };
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Form from '../components/Form/Form';
 import ListItem from '../components/ListItem/ListItem';
-import { addListItem, removeListItem, toggleListItemDone } from '../actions/index';
+import { addListItem, removeListItem, toggleListItemDone, editListItem } from '../actions/index';
 import './App.scss';
 
 class App extends Component {
@@ -15,6 +15,7 @@ class App extends Component {
         key={listItem.id}
         removeListItem={this.props.removeListItem}
         toggleListItemDone={this.props.toggleListItemDone}
+        onEditListitem={this.props.onEditListitem}
       />
     ))
   );
@@ -51,6 +52,7 @@ App.propTypes = {
   addToList: PropTypes.func.isRequired,
   removeListItem: PropTypes.func.isRequired,
   toggleListItemDone: PropTypes.func.isRequired,
+  onEditListitem: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -66,6 +68,9 @@ export default connect(
     },
     toggleListItemDone: (id) => {
       dispatch(toggleListItemDone(id));
+    },
+    onEditListitem: (id, value) => {
+      dispatch(editListItem(id, value));
     },
   }),
 )(App);

@@ -27,7 +27,7 @@ class ListItem extends Component {
   onEditBtnClick = (e) => {
     e.preventDefault();
     this.setState({ isEditable: true });
-    // this.props.onEditListitem(this.props.listItem.id, this.state.value);
+    this.props.onEditListitem(this.props.listItem.id, this.state.value);
   };
 
   onChangeInput = (e) => {
@@ -36,7 +36,7 @@ class ListItem extends Component {
   };
 
   obBlurInput = () => {
-    // this.props.onEditListitem(this.props.listItem.id, this.state.value);
+    this.props.onEditListitem(this.props.listItem.id, this.state.value);
     this.setState({ isEditable: false });
   };
 
@@ -83,8 +83,8 @@ ListItem.propTypes = {
     title: PropTypes.string.isRequired,
   }).isRequired,
   removeListItem: PropTypes.func.isRequired,
-  // toggleDoneListItem: PropTypes.func.isRequired,
-  // onEditListitem: PropTypes.func.isRequired,
+  toggleListItemDone: PropTypes.func.isRequired,
+  onEditListitem: PropTypes.func.isRequired,
 };
 
 export default ListItem;
