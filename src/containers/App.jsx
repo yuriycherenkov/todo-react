@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Form from '../components/Form/Form';
 import ListItem from '../components/ListItem/ListItem';
-import { addListItem, removeListItem, toggleListItemDone, editListItem } from '../actions/index';
+import * as listActions from '../actions/index';
 import './App.scss';
 
 class App extends Component {
@@ -61,16 +61,16 @@ export default connect(
   }),
   dispatch => ({
     addToList: (value) => {
-      dispatch(addListItem(value));
+      dispatch(listActions.addListItem(value));
     },
     removeListItem: (id) => {
-      dispatch(removeListItem(id));
+      dispatch(listActions.removeListItem(id));
     },
     toggleListItemDone: (id) => {
-      dispatch(toggleListItemDone(id));
+      dispatch(listActions.toggleListItemDone(id));
     },
     onEditListitem: (id, value) => {
-      dispatch(editListItem(id, value));
+      dispatch(listActions.editListItem(id, value));
     },
   }),
 )(App);
